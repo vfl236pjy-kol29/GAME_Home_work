@@ -17,12 +17,25 @@ def random_predict(number:int=1) -> int:
 print(f'Количество попыток{random_predict()}')
 def score_game(random_predict) -> int:
       count_ls=[]
+      #score_list=[]
       np.random.seed(1)
       random_array=np.random.randint(1,101,size=(1000))
       for number in random_array:
             count_ls.append(random_predict(number))
       score=int(np.mean(count_ls))
-      print(f"ваш алгоритм угадывает число всреднем за {score} попыток")
+      #score_list.append(score)
+      #def process_record(random_array,score_list):
+           # result={}
+            #i=0
+            #for number in random_array:
+             #     result[number]=score_list[i]
+              #    i+=1
+            #return result
+      result={int(number):count for number, count in zip(random_array,count_ls)}
+      for key,value in result.items():                            
+          print(f"ваш алгоритм угадывает число{key} всреднем за {value} попыток")
       return(score)
 # RUN
 score_game(random_predict)
+#for number,score in random_array:
+      
